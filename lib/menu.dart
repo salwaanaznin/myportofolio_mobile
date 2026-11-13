@@ -6,10 +6,14 @@ class MyHomePage extends StatelessWidget {
   final String nama = "Salwa Alyani Naznin";
   final String kelas = "PBP A";
 
+  // Daftar menu aksi yang sesuai dengan fitur portofolio pribadi.
   final List<ItemHomepage> items = [
-    ItemHomepage("Lihat Proyek", Icons.folder),
-    ItemHomepage("Tambah Proyek", Icons.add_circle),
-    ItemHomepage("Logout", Icons.logout),
+    // Menampilkan menu untuk melihat daftar proyek.
+    ItemHomepage("Lihat Projects", Icons.folder, const Color(0xFFE8A0BF),),
+    // Menampilkan menu untuk menambah data pendidikan.
+    ItemHomepage("Tambah Education", Icons.school,const Color(0xFFB89ACD),),
+    // Menampilkan menu untuk keluar dari aplikasi.
+    ItemHomepage("Logout", Icons.logout, const Color(0xFFC66B91),),
   ];
 
   @override
@@ -98,12 +102,17 @@ class InfoCard extends StatelessWidget {
   }
 }
 
+
 class ItemHomepage {
+  // Menyimpan nama, ikon, dan warna setiap tombol menu.
   final String name;
   final IconData icon;
+  final Color color;
 
-  ItemHomepage(this.name, this.icon);
+  // Constructor untuk menerima ketiga atribut tombol.
+  ItemHomepage(this.name, this.icon, this.color);
 }
+
 
 class ItemCard extends StatelessWidget {
   final ItemHomepage item;
@@ -113,7 +122,8 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Theme.of(context).colorScheme.secondary,
+      // Mengambil warna unik dari masing-masing ItemHomepage.
+      color: item.color,
       borderRadius: BorderRadius.circular(12),
       child: InkWell(
         onTap: () {
