@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:myportofolio_mobile/widgets/left_drawer.dart';
+import 'package:myportofolio_mobile/widgets/project_card.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
@@ -8,13 +10,28 @@ class MyHomePage extends StatelessWidget {
 
   // Daftar menu aksi yang sesuai dengan fitur portofolio pribadi.
   final List<ItemHomepage> items = [
-    // Menampilkan menu untuk melihat daftar proyek.
-    ItemHomepage("Lihat Projects", Icons.folder, const Color(0xFFE8A0BF),),
-    // Menampilkan menu untuk menambah data pendidikan.
-    ItemHomepage("Tambah Education", Icons.school,const Color(0xFFB89ACD),),
-    // Menampilkan menu untuk keluar dari aplikasi.
-    ItemHomepage("Logout", Icons.logout, const Color(0xFFC66B91),),
+    // Menampilkan menu untuk melihat daftar proyek
+    ItemHomepage(
+      "Lihat Projects",
+      Icons.folder,
+      const Color(0xFFE8A0BF),
+    ),
+
+    // Menampilkan menu untuk menambah data pendidikan
+    ItemHomepage(
+      "Tambah Education",
+      Icons.school,
+      const Color(0xFFB89ACD),
+    ),
+
+    // Membuka halaman form tambah proyek
+    ItemHomepage(
+      "Tambah Proyek",
+      Icons.add_circle,
+      const Color(0xFFC66B91),
+    ),
   ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +39,16 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'MyPortfolio',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
+
+      drawer: const LeftDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -111,48 +134,4 @@ class ItemHomepage {
 
   // Constructor untuk menerima ketiga atribut tombol.
   ItemHomepage(this.name, this.icon, this.color);
-}
-
-
-class ItemCard extends StatelessWidget {
-  final ItemHomepage item;
-
-  const ItemCard(this.item, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      // Mengambil warna unik dari masing-masing ItemHomepage.
-      color: item.color,
-      borderRadius: BorderRadius.circular(12),
-      child: InkWell(
-        onTap: () {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(
-                content: Text("Kamu telah menekan tombol ${item.name}!"),
-              ),
-            );
-        },
-        child: Container(
-          padding: const EdgeInsets.all(8),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(item.icon, color: Colors.white, size: 30.0),
-                const Padding(padding: EdgeInsets.all(3)),
-                Text(
-                  item.name,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
 }
