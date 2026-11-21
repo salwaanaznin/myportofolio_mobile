@@ -93,3 +93,38 @@ Dalam pengerjaan Tutorial 08 dan Individual Assignment 7, saya menggunakan ChatG
 ![AI Disclosure 2](<AI%20DISCLOSURE/tugas7-2.jpeg>)
 ![AI Disclosure 3](<AI%20DISCLOSURE/tugas7-3.jpeg>)
 - Pemanfaatan output: Output AI digunakan sebagai referensi untuk memahami konsep dasar Flutter dan membantu merumuskan jawaban enam pertanyaan reflektif pada README.md. Penjelasan yang diberikan kemudian disesuaikan dengan implementasi pada proyek MyPortfolio Mobile agar jawaban lebih runtut, jelas, dan relevan dengan kode yang digunakan.
+
+### Tugas 7
+
+**1. Jelaskan perbedaan antara Navigator.push(), Navigator.pushReplacement(), dan Navigator.pop(). Metode apa yang digunakan untuk membuka formulir dari kartu aksi? Jelaskan juga bagaimana opsi Home di drawer membawa pengguna kembali ke halaman utama.**
+
+- Navigator.push() digunakan untuk membuka halaman baru dengan menambahkannya ke navigation stack, sehingga halaman sebelumnya tetap tersimpan dan pengguna dapat kembali menggunakan tombol Back. 
+- Navigator.pushReplacement() mengganti halaman yang sedang aktif dengan halaman baru, sedangkan Navigator.pop() menutup halaman teratas dan kembali ke halaman sebelumnya.
+- Pada aplikasi MyPortfolio Mobile, Navigator.push() digunakan dalam ItemCard untuk membuka EducationFormPage ketika kartu Tambah Education ditekan. Sementara itu, opsi Home pada LeftDrawer menggunakan Navigator.pushReplacement() untuk mengganti halaman saat ini dengan MyHomePage, sehingga pengguna kembali ke halaman utama.
+
+**2. Bagaimana susunan Scaffold, AppBar, dan Drawer membantu menjaga struktur halaman tetap konsisten? Berikan satu contoh penggunaan warna tema portofolio di lebih dari satu halaman.**
+
+- Scaffold menyediakan struktur dasar halaman Flutter 
+- AppBar menampilkan judul dan navigasi bagian atas 
+- Drawer menyediakan menu untuk berpindah antarhalaman. 
+
+Dengan menggunakan komponen tersebut secara konsisten, halaman utama dan formulir memiliki struktur yang seragam serta navigasi yang mudah digunakan.
+
+Pada aplikasi MyPortfolio Mobile, MyHomePage dan EducationFormPage sama-sama menggunakan Scaffold, AppBar, serta komponen LeftDrawer. Warna AppBar kedua halaman menggunakan Theme.of(context).colorScheme.primary, yang berasal dari tema indigo pada main.dart. Hal ini membuat tampilan aplikasi tetap konsisten.
+
+**3. Mengapa tata letak tersebut dipilih untuk formulir? Jelaskan peran widget pengatur jarak dan widget penggulir ketika ruang layar terbatas.**
+
+Formulir Education disusun menggunakan Column agar setiap input ditampilkan secara vertikal dan mudah diikuti pengguna. SizedBox digunakan untuk memberikan jarak antarfield agar tampilannya tidak terlalu rapat, sedangkan Padding memberikan ruang antara isi formulir dan tepi layar.
+
+Selain itu, SingleChildScrollView memungkinkan formulir digulir secara vertikal ketika tinggi konten melebihi ruang yang tersedia, misalnya pada layar ponsel atau ketika keyboard muncul. Dengan demikian, pengguna tetap dapat mengakses seluruh input dan tombol Simpan.
+
+**4. Apa peran GlobalKey<FormState>, validator, dan validate() saat tombol Simpan ditekan? Berikan satu contoh nilai yang ditolak oleh validasi dan jelaskan mengapa memilih jenis input atau papan ketik saja belum cukup.**
+
+- GlobalKey<FormState> digunakan untuk mengakses dan mengelola state dari widget Form. 
+- Setiap validator memeriksa apakah nilai pada field memenuhi aturan yang ditentukan
+- validate() menjalankan seluruh validator ketika tombol Simpan ditekan. 
+Jika ada input tidak valid, pesan kesalahan ditampilkan pada field terkait dan dialog ringkasan tidak akan muncul.
+
+Contohnya, jika pengguna mengisi Nama Institusi hanya dengan spasi, validasi value.trim().isEmpty akan menolak input tersebut karena nama institusi wajib diisi. Pada field URL Logo Institusi, aplikasi juga memeriksa format URL dan mengharuskan penggunaan skema HTTP atau HTTPS apabila field diisi.
+
+Pemilihan jenis keyboard, seperti TextInputType.url, hanya membantu pengguna mengetik URL dengan lebih mudah, tetapi tidak menjamin format input sudah benar. Oleh karena itu, validasi tetap diperlukan untuk memastikan data sesuai aturan model.
