@@ -94,7 +94,7 @@ Dalam pengerjaan Tutorial 08 dan Individual Assignment 7, saya menggunakan ChatG
 ![AI Disclosure 3](<AI%20DISCLOSURE/tugas7-3.jpeg>)
 - Pemanfaatan output: Output AI digunakan sebagai referensi untuk memahami konsep dasar Flutter dan membantu merumuskan jawaban enam pertanyaan reflektif pada README.md. Penjelasan yang diberikan kemudian disesuaikan dengan implementasi pada proyek MyPortfolio Mobile agar jawaban lebih runtut, jelas, dan relevan dengan kode yang digunakan.
 
-### Tugas 7
+### Tugas 8
 
 **1. Jelaskan perbedaan antara Navigator.push(), Navigator.pushReplacement(), dan Navigator.pop(). Metode apa yang digunakan untuk membuka formulir dari kartu aksi? Jelaskan juga bagaimana opsi Home di drawer membawa pengguna kembali ke halaman utama.**
 
@@ -128,3 +128,19 @@ Jika ada input tidak valid, pesan kesalahan ditampilkan pada field terkait dan d
 Contohnya, jika pengguna mengisi Nama Institusi hanya dengan spasi, validasi value.trim().isEmpty akan menolak input tersebut karena nama institusi wajib diisi. Pada field URL Logo Institusi, aplikasi juga memeriksa format URL dan mengharuskan penggunaan skema HTTP atau HTTPS apabila field diisi.
 
 Pemilihan jenis keyboard, seperti TextInputType.url, hanya membantu pengguna mengetik URL dengan lebih mudah, tetapi tidak menjamin format input sudah benar. Oleh karena itu, validasi tetap diperlukan untuk memastikan data sesuai aturan model.
+
+## AI Disclosure
+
+Dalam pengerjaan Tutorial 08 dan Individual Assignment 7, saya menggunakan ChatGPT sebagai alat bantu pembelajaran dan pendamping teknis.
+
+**Implementasi Navigasi dari ItemCard ke EducationFormPage**
+- Prompt: "liat deh educationformpage aku. gmn cara menghubungkannya ke tombol Tambah Education di itemCard pake Navigator.push() tanpa ngubah fungsi tombol lainnya"
+- Screenshoot jawaban: 
+![AI Disclosure 1](<AI%20DISCLOSURE/tugas8-1.jpeg>)
+- Pemanfaatan output: Output AI digunakan sebagai referensi untuk menambahkan navigasi Navigator.push() pada tombol Tambah Education melalui kondisi else if di ItemCard. Implementasi ini memungkinkan pengguna membuka EducationFormPage tanpa mengubah fungsi tombol lainnya, sekaligus mempertahankan mekanisme kembali ke halaman Home.
+
+**Pengaturan Nilai Awal dan Pilihan Dropdown Jenjang Pendidikan**
+- Prompt: "aku pake DropdownButtonFormField<String> kan ya buat jenjang pendidikan. gmn cara mengatur initialvalue nya ke s1 dan membatasi pilihannya cuman sma sm s1 aja"
+- Screenshoot jawaban: 
+![AI Disclosure 2](<AI%20DISCLOSURE/tugas8-2.jpeg>)
+- Pemanfaatan output: Menggunakan penjelasan dan contoh kode dari AI untuk mengatur initialValue menjadi S1 serta membatasi pilihan dropdown hanya SMA dan S1 melalui DropdownButtonFormField, agar sesuai dengan model Education pada Django.
