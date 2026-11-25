@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:myportofolio_mobile/widgets/left_drawer.dart';
 
@@ -20,10 +19,7 @@ class _EducationFormPageState extends State<EducationFormPage> {
   String _thumbnail = "";
 
   // Pilihan sesuai model Education di Django
-  final List<String> _degrees = [
-    'SMA',
-    'S1',
-  ];
+  final List<String> _degrees = ['SMA', 'S1'];
 
   // Validasi URL gambar jika pengguna mengisinya
   bool _isValidUrl(String value) {
@@ -50,9 +46,7 @@ class _EducationFormPageState extends State<EducationFormPage> {
       context: context,
       builder: (dialogContext) {
         return AlertDialog(
-          title: const Text(
-            'Data Pendidikan Berhasil Diisi!',
-          ),
+          title: const Text('Data Pendidikan Berhasil Diisi!'),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -64,17 +58,13 @@ class _EducationFormPageState extends State<EducationFormPage> {
                 Text('Deskripsi: $_description'),
                 const SizedBox(height: 8),
 
-                Text(
-                  'Jurusan: ${_major.isEmpty ? "-" : _major}',
-                ),
+                Text('Jurusan: ${_major.isEmpty ? "-" : _major}'),
                 const SizedBox(height: 8),
 
                 Text('Jenjang Pendidikan: $_degree'),
                 const SizedBox(height: 8),
 
-                Text(
-                  'URL Logo: ${_thumbnail.isEmpty ? "-" : _thumbnail}',
-                ),
+                Text('URL Logo: ${_thumbnail.isEmpty ? "-" : _thumbnail}'),
               ],
             ),
           ),
@@ -97,15 +87,10 @@ class _EducationFormPageState extends State<EducationFormPage> {
       appBar: AppBar(
         title: const Text(
           'Add Education Form',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
-        iconTheme: const IconThemeData(
-          color: Colors.white,
-        ),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
 
       // Menggunakan Drawer dari Tutorial 09
@@ -118,7 +103,6 @@ class _EducationFormPageState extends State<EducationFormPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               // === 1. NAMA INSTITUSI ===
               TextFormField(
                 maxLength: 255,
@@ -261,20 +245,14 @@ class _EducationFormPageState extends State<EducationFormPage> {
                 width: double.infinity,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor:
-                        Theme.of(context).colorScheme.primary,
+                    backgroundColor: Theme.of(context).colorScheme.primary,
                     foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 16,
-                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 16),
                   ),
                   onPressed: _saveEducation,
                   child: const Text(
                     'Simpan Pendidikan',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
